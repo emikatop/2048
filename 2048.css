@@ -1,0 +1,22 @@
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #faf8ef;
+    margin: 0;
+    padding: 20px;
+}
+
+hr {
+    margin: 20px auto;
+    width: 80%;
+    border: 1px solid #ccc;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
