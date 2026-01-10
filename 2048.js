@@ -56,13 +56,13 @@ document.addEventListener ("keyup", (e) => {
     }
 })
 
-function filterZero(row) {
-    return row.filterZero (num => num != 0);
+function filter(row) {
+    return row.filter (num => num != 0);
 }
 
 function slide(row) {
     // remove all zeros
-    row = filterZero(row); // [2,2,4]
+    row = filter(row); // [2,2,4]
     // slide left
     for (let i = 0; i < row.length-1; i++) {
         if (row[i] == row[i+1]) {
@@ -72,7 +72,7 @@ function slide(row) {
         }
     }
 
-    row = filterZero(row); // [4,0] -> [4]
+    row = filter(row); // [4,0] -> [4]
         while (row.length < cols) {
     row.push(0);
     }
@@ -84,11 +84,11 @@ function slideLeft() {
         let row = board[r]; // get each row
         row = slide(row);
         board[r] = row;
-    }
 
-    for (let c = 0; c < cols; c++) {
-            let tile = document.getElementById(r.toString() + "-" + c.toString());
-            let num = board[r][c];
-            updateTile(tile, num);
+        for (let c = 0; c < cols; c++) {
+                let tile = document.getElementById(r.toString() + "-" + c.toString());
+                let num = board[r][c];
+                updateTile(tile, num);
+            }
     }
 }
