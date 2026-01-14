@@ -43,6 +43,20 @@ function hasEmptyTile() {
     return false;
 }
 
+function hasMovesLeft() {
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            let val = board[r][c];
+
+            if (val === 0) return true;
+
+            if (c < cols - 1 && val === board[r][c + 1]) return true;
+            if (r < rows - 1 && val === board[r + 1][c]) return true;
+        }
+    }
+    return false;
+}
+
 function setTwo() {
     if (!hasEmptyTile()) {
         return;
@@ -96,10 +110,13 @@ document.addEventListener ("keyup", (e) => {
         slideDown();
         setTwo();
     }
+
     document.getElementById("score").innerText = score;
+    
     if (!hasEmptyTile()) {
         alert("Game over, loser! Your score is just " + score.toString());
         location.reload();
+        reload;
     }
 })
 
