@@ -53,14 +53,14 @@ function setTwo() {
         //random r (row) and c (column) index
         let r = Math.floor(Math.random() * rows) 
         let c = Math.floor(Math.random() * cols)
-    }
 
-    if (board[r][c] == 0) {
-        board[r][c] = 2;
-        let tile = document.getElementById(r.toString() + "-" + c.toString());
-        tile.innerText = "2";
-        tile.classList.add("tile-2");
-        found = true;
+        if (board[r][c] == 0) {
+            board[r][c] = 2;
+            let tile = document.getElementById(r.toString() + "-" + c.toString());
+            tile.innerText = "2";
+            tile.classList.add("x2");
+            found = true;
+        }
     }
 }
 
