@@ -98,7 +98,8 @@ document.addEventListener ("keyup", (e) => {
     }
     document.getElementById("score").innerText = score;
     if (!hasEmptyTile()) {
-        alert("Game Over! Your score is " + score.toString());
+        alert("Game over, loser! Your score is just " + score.toString());
+        location.reload();
     }
 })
 
