@@ -27,6 +27,41 @@ function setGame() {
             document.getElementById("board").append(tile);
         }
     }
+    //set two initial tiles
+    setTwo();
+    setTwo();
+}
+
+function hasEmptyTile() {
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (board[r][c] == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function setTwo() {
+    if (!hasEmptyTile()) {
+        return;
+    }
+
+    let found = false; 
+    while (!found) {
+        //random r (row) and c (column) index
+        let r = Math.floor(Math.random() * rows) 
+        let c = Math.floor(Math.random() * cols)
+    }
+
+    if (board[r][c] == 0) {
+        board[r][c] = 2;
+        let tile = document.getElementById(r.toString() + "-" + c.toString());
+        tile.innerText = "2";
+        tile.classList.add("tile-2");
+        found = true;
+    }
 }
 
 function updateTile(tile, num) {
@@ -47,15 +82,23 @@ function updateTile(tile, num) {
 document.addEventListener ("keyup", (e) => {
     if (e.code == "ArrowLeft") {
         slideLeft();
+        setTwo();
     }
     else if (e.code == "ArrowRight") {
         slideRight();
+        setTwo();
     }
     else if (e.code == "ArrowUp") {
         slideUp();
+        setTwo();
     }
     else if (e.code == "ArrowDown") {
         slideDown();
+        setTwo();
+    }
+    document.getElementById("score").innerText = score;
+    if (!hasEmptyTile()) {
+        alert("Game Over! Your score is " + score.toString());
     }
 })
 
