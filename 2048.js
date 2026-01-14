@@ -1,6 +1,8 @@
 // prepare building blocks of the main code
 let board;
 let score = 0;
+let bestScore = Number(localStorage.getItem("bestScore")) || 0;
+document.getElementById("best-score").innerText = bestScore.toString();
 const rows = 4;
 const cols = 4;
 
@@ -31,6 +33,8 @@ function setGame() {
     setTwo();
     setTwo();
 }
+
+
 
 function hasEmptyTile() {
     for (let r = 0; r < rows; r++) {
@@ -112,9 +116,16 @@ document.addEventListener ("keyup", (e) => {
     }
 
     document.getElementById("score").innerText = score;
-    
+
     if (!hasEmptyTile()) {
         alert("Game over, loser! Your score is just " + score.toString());
+
+        if (score > bestScore) {
+            bestScore = score;
+            localStorage.setItem("bestScore", bestScore);
+            document.getElementById("best-score").innerText = bestScore;
+        }
+
         location.reload();
         reload;
     }
